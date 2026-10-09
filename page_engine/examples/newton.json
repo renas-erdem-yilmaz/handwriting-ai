@@ -1,0 +1,9 @@
+{
+  "seed": 9100,
+  "layout": {"page": "a4"},
+  "blocks": [
+    {"kind": "heading", "text": "Newton's second law"},
+    {"kind": "paragraph", "text": "A net force changes the motion of a body. The force equals mass times acceleration. A greater mass needs more force for the same acceleration."},
+    {"kind": "math", "text": "F = ma"}
+  ]
+}

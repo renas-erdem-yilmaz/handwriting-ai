@@ -1,0 +1,12 @@
+{
+  "seed": 9300,
+  "layout": {"page": "a4"},
+  "blocks": [
+    {"kind": "heading", "text": "Motion notes"},
+    {"kind": "paragraph", "text": "The angle $θ$ changes over time. These symbols use accurate typeset math."},
+    {"kind": "math", "text": "α,\\ β,\\ θ,\\ φ,\\ Δ,\\ ω"},
+    {"kind": "math", "text": "ω=\\frac{Δθ}{Δt}\\quad ⇒\\quad θ(t)=θ_0+ωt"},
+    {"kind": "math", "text": "x(t)=A\\cos(ωt+φ),\\quad E_k=\\frac{1}{2}mv^{2}"},
+    {"kind": "math", "text": "F_x=F\\cos θ,\\quad F_y=F\\sin θ,\\quad a\\geq0,\\quad Δt\\neq0"}
+  ]
+}

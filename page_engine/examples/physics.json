@@ -1,0 +1,11 @@
+{
+  "seed": 9200,
+  "layout": {"page": "notebook"},
+  "blocks": [
+    {"kind": "heading", "text": "Physics solution"},
+    {"kind": "paragraph", "text": "Given mass $m=2\\,\\mathrm{kg}$ and force $F=6\\,\\mathrm{N}$ find acceleration."},
+    {"kind": "math", "text": "a=\\frac{F}{m}=\\frac{6}{2}=3\\,\\mathrm{m}/\\mathrm{s}^{2}"},
+    {"kind": "paragraph", "text": "From rest after $t=4\\,\\mathrm{s}$ the velocity is"},
+    {"kind": "math", "text": "v=v_0+at=0+3\\times4=12\\,\\mathrm{m}/\\mathrm{s}"}
+  ]
+}

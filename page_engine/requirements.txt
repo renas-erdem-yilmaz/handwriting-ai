@@ -1,0 +1,2 @@
+# Additional dependency; install only into the existing .reforge environment.
+matplotlib==3.11.2

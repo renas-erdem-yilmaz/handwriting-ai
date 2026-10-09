@@ -1,0 +1,424 @@
+{
+  "schema": 1,
+  "source": "Heuristic dark-ink analysis of scanned pages, excluding faint grid and page edges",
+  "page_count": 21,
+  "pages": [
+    {
+      "page": "data\\pages\\page_001.png",
+      "sha256": "48ce6117de7d5fa30460039bea8983f5bc9278bf12f0fcbbfff0a5cdbaa82d3b",
+      "original_size": [
+        2180,
+        3509
+      ],
+      "margins_fraction": [
+        0.07142857142857142,
+        0.05432595573440646,
+        0.08375,
+        0.059374999999999956
+      ],
+      "line_pitch_fraction": 0.018125,
+      "paragraph_gap_fraction": 0.07168749999999999,
+      "heading_center_x_fraction": 0.40040241448692154,
+      "heading_top_fraction": 0.07375,
+      "detected_line_bands": 33
+    },
+    {
+      "page": "data\\pages\\page_002.png",
+      "sha256": "4be7236919f60b726368fecffc8460ee81c56eb560230b755052a8e524117008",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.044,
+        0.0010000000000000009,
+        0.07954545454545454,
+        0.047459893048128365
+      ],
+      "line_pitch_fraction": 0.03396646376152009,
+      "paragraph_gap_fraction": 0.04913101604278075,
+      "heading_center_x_fraction": 0.604,
+      "heading_top_fraction": 0.06016042780748663,
+      "detected_line_bands": 24
+    },
+    {
+      "page": "data\\pages\\page_003.png",
+      "sha256": "00f7e3f2b36a60e7ec140dfc540f2e3308e80c2c29467c672cf37f4b465e1df5",
+      "original_size": [
+        2238,
+        3509
+      ],
+      "margins_fraction": [
+        0.084,
+        0.05800000000000005,
+        0.0784438775510204,
+        0.06568877551020413
+      ],
+      "line_pitch_fraction": 0.03125,
+      "paragraph_gap_fraction": 0.049107142857142856,
+      "heading_center_x_fraction": 0.373,
+      "heading_top_fraction": 0.06887755102040816,
+      "detected_line_bands": 25
+    },
+    {
+      "page": "data\\pages\\page_004.png",
+      "sha256": "6318530207c9d74c24d880f9851301501531388eec3f3f96c5bee76543ce65bf",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.043,
+        0.0010000000000000009,
+        0.08021390374331551,
+        0.21122994652406413
+      ],
+      "line_pitch_fraction": 0.022058823529411766,
+      "paragraph_gap_fraction": 0.04996657754010695,
+      "heading_center_x_fraction": 0.726,
+      "heading_top_fraction": 0.07152406417112299,
+      "detected_line_bands": 26
+    },
+    {
+      "page": "data\\pages\\page_005.png",
+      "sha256": "d81d99d04fa660e5bd5efd22278575bfbf44a2071e8708715eff035f8a89fe6f",
+      "original_size": [
+        2280,
+        3509
+      ],
+      "margins_fraction": [
+        0.036,
+        0.027000000000000024,
+        0.06107862248213125,
+        0.2020792722547109
+      ],
+      "line_pitch_fraction": 0.026001732726878935,
+      "paragraph_gap_fraction": 0.05341901520908354,
+      "heading_center_x_fraction": 0.429,
+      "heading_top_fraction": 0.04548408057179987,
+      "detected_line_bands": 22
+    },
+    {
+      "page": "data\\pages\\page_006.png",
+      "sha256": "1e345e7425a62b9e426f56e11a0977a038899b25b1d430ea1a7465e71abed9bf",
+      "original_size": [
+        2238,
+        3509
+      ],
+      "margins_fraction": [
+        0.051,
+        0.0010000000000000009,
+        0.09375,
+        0.05963647959183804
+      ],
+      "line_pitch_fraction": 0.02391581632653061,
+      "paragraph_gap_fraction": 0.04772457608836348,
+      "heading_center_x_fraction": 0.597,
+      "heading_top_fraction": 0.08099489795918367,
+      "detected_line_bands": 34
+    },
+    {
+      "page": "data\\pages\\page_007.png",
+      "sha256": "8375ce2fb96d61127d5d48747351e1afd4716024b9fc55d5d1accc5bf8618e3d",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.076,
+        0.119,
+        0.07620320855614973,
+        0.08355614973262027
+      ],
+      "line_pitch_fraction": 0.03241978609625668,
+      "paragraph_gap_fraction": 0.05080213903743316,
+      "heading_center_x_fraction": 0.314,
+      "heading_top_fraction": 0.06751336898395723,
+      "detected_line_bands": 26
+    },
+    {
+      "page": "data\\pages\\page_008.png",
+      "sha256": "30c581357ff3d73fc3b50a134521de3a9309bb78649b9549594296cd496bcbff",
+      "original_size": [
+        2180,
+        3509
+      ],
+      "margins_fraction": [
+        0.035211267605633804,
+        0.06841046277665996,
+        0.075,
+        0.055625000000000036
+      ],
+      "line_pitch_fraction": 0.0234375,
+      "paragraph_gap_fraction": 0.05572916666666664,
+      "heading_center_x_fraction": 0.2837022132796781,
+      "heading_top_fraction": 0.04875,
+      "detected_line_bands": 31
+    },
+    {
+      "page": "data\\pages\\page_009.png",
+      "sha256": "70da418c42834fa37ff894a0de206f3bea4831aa094221233cfeccd01ba729c8",
+      "original_size": [
+        2396,
+        3509
+      ],
+      "margins_fraction": [
+        0.048,
+        0.0010000000000000009,
+        0.05733788395904437,
+        0.24982935153583619
+      ],
+      "line_pitch_fraction": 0.025426621160409557,
+      "paragraph_gap_fraction": 0.059897610921501705,
+      "heading_center_x_fraction": 0.834,
+      "heading_top_fraction": 0.04505119453924915,
+      "detected_line_bands": 20
+    },
+    {
+      "page": "data\\pages\\page_010.png",
+      "sha256": "cfc3c0e5ab2d7395aa3ffbdd8f33401262bc4ac5d30513ee54b73cbe13aa779a",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.035,
+        0.02200000000000002,
+        0.08021390374331551,
+        0.196524064171123
+      ],
+      "line_pitch_fraction": 0.03000594177064767,
+      "paragraph_gap_fraction": 0.05186908679555736,
+      "heading_center_x_fraction": 0.209,
+      "heading_top_fraction": 0.04478609625668449,
+      "detected_line_bands": 25
+    },
+    {
+      "page": "data\\pages\\page_011.png",
+      "sha256": "1375c57063bf140fb2d33e8bf59648355eb8552f9cf635eef8dec06f14c44915",
+      "original_size": [
+        2180,
+        3509
+      ],
+      "margins_fraction": [
+        0.0482897384305835,
+        0.001006036217303774,
+        0.078125,
+        0.11187499999999995
+      ],
+      "line_pitch_fraction": 0.02515625,
+      "paragraph_gap_fraction": 0.04735795454545454,
+      "heading_center_x_fraction": 0.3722334004024145,
+      "heading_top_fraction": 0.066875,
+      "detected_line_bands": 30
+    },
+    {
+      "page": "data\\pages\\page_012.png",
+      "sha256": "1c923dfd90299c29d419aac9dcf33e2f97a66e7339cd5cfd3e3e2fd94ef4ac04",
+      "original_size": [
+        2288,
+        3509
+      ],
+      "margins_fraction": [
+        0.068,
+        0.03300000000000003,
+        0.07757496740547588,
+        0.12190352020860495
+      ],
+      "line_pitch_fraction": 0.021406673949046832,
+      "paragraph_gap_fraction": 0.06649282920469361,
+      "heading_center_x_fraction": 0.564,
+      "heading_top_fraction": 0.06584093872229466,
+      "detected_line_bands": 25
+    },
+    {
+      "page": "data\\pages\\page_013.png",
+      "sha256": "71c7a81f33e27c229c8493a5363ea7cb949ab1d5b3d70f2b39d314f7cd11f419",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.05,
+        0.0010000000000000009,
+        0.053475935828877004,
+        0.48061497326203206
+      ],
+      "line_pitch_fraction": 0.029077540106951873,
+      "paragraph_gap_fraction": 0.05815508021390375,
+      "heading_center_x_fraction": 0.8285,
+      "heading_top_fraction": 0.04478609625668449,
+      "detected_line_bands": 16
+    },
+    {
+      "page": "data\\pages\\page_014.png",
+      "sha256": "af1f4afcd144dfbf1f60692dae612618d257177bf4eef784c4517ef36067a3b2",
+      "original_size": [
+        2238,
+        3509
+      ],
+      "margins_fraction": [
+        0.036,
+        0.02100000000000002,
+        0.07397959183673469,
+        0.16262755102040816
+      ],
+      "line_pitch_fraction": 0.028102817213842075,
+      "paragraph_gap_fraction": 0.05620563442768415,
+      "heading_center_x_fraction": 0.547,
+      "heading_top_fraction": 0.04974489795918367,
+      "detected_line_bands": 30
+    },
+    {
+      "page": "data\\pages\\page_015.png",
+      "sha256": "d05c14609353400605a3811893046b40558f45c5fa8b7a04c63cdb81b2ece028",
+      "original_size": [
+        2238,
+        3509
+      ],
+      "margins_fraction": [
+        0.044,
+        0.0010000000000000009,
+        0.10586734693877552,
+        0.08992346938775508
+      ],
+      "line_pitch_fraction": 0.03223248758963051,
+      "paragraph_gap_fraction": 0.061224489795918366,
+      "heading_center_x_fraction": 0.75,
+      "heading_top_fraction": 0.06377551020408163,
+      "detected_line_bands": 24
+    },
+    {
+      "page": "data\\pages\\page_016.png",
+      "sha256": "d7bcbfd3bd0b38724267a4b4158d400095f95af4eba34f685800d38665c92314",
+      "original_size": [
+        2180,
+        3509
+      ],
+      "margins_fraction": [
+        0.07243460764587525,
+        0.08249496981891347,
+        0.0775,
+        0.13875000000000004
+      ],
+      "line_pitch_fraction": 0.0265625,
+      "paragraph_gap_fraction": 0.05167902967121091,
+      "heading_center_x_fraction": 0.3963782696177062,
+      "heading_top_fraction": 0.07125,
+      "detected_line_bands": 22
+    },
+    {
+      "page": "data\\pages\\page_017.png",
+      "sha256": "b72ac523bee86c4825b55a3f634e2d0417e3f0751216f696a72cd9ef7a912ad4",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.047,
+        0.0010000000000000009,
+        0.07887700534759358,
+        0.15708556149732622
+      ],
+      "line_pitch_fraction": 0.03141711229946524,
+      "paragraph_gap_fraction": 0.04725421637186346,
+      "heading_center_x_fraction": 0.769,
+      "heading_top_fraction": 0.06483957219251336,
+      "detected_line_bands": 25
+    },
+    {
+      "page": "data\\pages\\page_018.png",
+      "sha256": "76dedeed72567a0bf1d14927eb4d837628ebe6da7915f6c3de111dc7b96d6055",
+      "original_size": [
+        2238,
+        3509
+      ],
+      "margins_fraction": [
+        0.077,
+        0.08699999999999997,
+        0.07971938775510204,
+        0.15497448979591832
+      ],
+      "line_pitch_fraction": 0.02965561224489796,
+      "paragraph_gap_fraction": 0.05532525510204082,
+      "heading_center_x_fraction": 0.348,
+      "heading_top_fraction": 0.06951530612244898,
+      "detected_line_bands": 27
+    },
+    {
+      "page": "data\\pages\\page_019.png",
+      "sha256": "c75fb6373dd5f5b3cd8282bfe09e24e024d4ba22e93e65b0c095e40f5eb6dcd9",
+      "original_size": [
+        2346,
+        3509
+      ],
+      "margins_fraction": [
+        0.051,
+        0.0010000000000000009,
+        0.058823529411764705,
+        0.12700534759358284
+      ],
+      "line_pitch_fraction": 0.03643048128342246,
+      "paragraph_gap_fraction": 0.0565751578677893,
+      "heading_center_x_fraction": 0.984,
+      "heading_top_fraction": 0.04478609625668449,
+      "detected_line_bands": 19
+    },
+    {
+      "page": "data\\pages\\page_020.png",
+      "sha256": "43d52839592b348c116e80f52f3ab0e7680ae3359537ca7c68dc0095b8f71a52",
+      "original_size": [
+        2180,
+        3509
+      ],
+      "margins_fraction": [
+        0.06740442655935613,
+        0.039235412474849074,
+        0.086875,
+        0.10062499999999996
+      ],
+      "line_pitch_fraction": 0.02671875,
+      "paragraph_gap_fraction": 0.07880357142857143,
+      "heading_center_x_fraction": 0.37525150905432597,
+      "heading_top_fraction": 0.07625,
+      "detected_line_bands": 26
+    },
+    {
+      "page": "data\\pages\\page_021.png",
+      "sha256": "126faf7904051d9bb0f52e8bef82bc1e082118c4d361c5188ec7f48b9e8ad494",
+      "original_size": [
+        2296,
+        3509
+      ],
+      "margins_fraction": [
+        0.056,
+        0.0010000000000000009,
+        0.055628272251308904,
+        0.13939790575916233
+      ],
+      "line_pitch_fraction": 0.025850785340314136,
+      "paragraph_gap_fraction": 0.05170157068062827,
+      "heading_center_x_fraction": 0.982,
+      "heading_top_fraction": 0.045157068062827224,
+      "detected_line_bands": 26
+    }
+  ],
+  "margins_fraction": [
+    0.055,
+    0.035,
+    0.078125,
+    0.12700534759358284
+  ],
+  "line_pitch_fraction": 0.02671875,
+  "paragraph_extra_lines": 1.0,
+  "heading_align": "center",
+  "measured_heading_center_x_fraction": 0.547,
+  "measured_heading_top_fraction": 0.06483957219251336,
+  "measured_paragraph_gap_fraction": 0.05341901520908354,
+  "limitations": [
+    "Diagrams, boxed equations and question numbers affect these estimates.",
+    "Heading classification is heuristic, not semantic recognition; center alignment is a configurable template choice.",
+    "Measured irregular paragraph gaps are retained; rendering uses a conservative one-line extra gap.",
+    "Margins and line pitch are clamped to usable page ranges; per-page raw measurements are retained."
+  ]
+}
