@@ -1,0 +1,15 @@
+.venv/
+.reforge/
+__pycache__/
+*.pyc
+
+data/
+
+reforge/
+
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+.DS_Store
