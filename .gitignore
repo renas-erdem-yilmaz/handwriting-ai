@@ -16,3 +16,7 @@ reforge/
 # Generated inference artifacts and local model cache
 outputs/
 .reforge-cache/
+
+# Separate upstream training checkout and fine-tuning artifacts
+diffusionpen-training/
+training/reports/

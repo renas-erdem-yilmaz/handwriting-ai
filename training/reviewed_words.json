@@ -1,0 +1,12 @@
+{
+  "notes": "Manually inspected boxes in original split images; text is copied verbatim from parent labels. This is a small reviewed pilot, not an automatic alignment of all lines.",
+  "sources": [
+    {"split":"train","filename":"page_001_region_011_crop_0011.png","words":[["the",[48,12,132,73]],["dimention",[139,12,326,77]],["of",[331,12,392,73]],["x",[400,12,445,73]],["should",[446,12,576,73]],["be",[578,12,642,73]]]},
+    {"split":"train","filename":"page_001_region_012_crop_0012.png","words":[["equal",[53,18,177,86]],["to",[185,18,253,86]],["the",[263,18,339,86]],["dimention",[344,18,529,86]],["of",[533,18,597,86]],["A",[608,18,669,86]]]},
+    {"split":"train","filename":"page_001_region_020_crop_0020.png","words":[["will",[49,13,140,69]],["return",[149,13,271,69]],["a",[282,13,318,69]]]},
+    {"split":"train","filename":"page_001_region_009_crop_0009.png","words":[["a",[52,14,99,74]],["output",[343,14,500,74]],["so",[519,14,582,74]]]},
+    {"split":"val","filename":"page_002_region_005_crop_0045.png","words":[["length",[145,10,280,87]],["won't",[569,10,702,87]],["change",[711,10,895,87]],["constant",[1158,10,1360,87]]]},
+    {"split":"test","filename":"page_001_region_008_crop_0008.png","words":[["cosinus",[46,10,187,70]],["function",[192,10,352,70]],["returns",[358,10,490,70]]]},
+    {"split":"test","filename":"page_001_region_019_crop_0019.png","words":[["since",[115,8,221,68]],["exponent",[224,8,378,68]],["side",[388,8,505,68]]]}
+  ]
+}
