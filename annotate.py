@@ -3,30 +3,11 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import ttk
 from PIL import Image, ImageTk
-import torch
-from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 
 CROP_FOLDER = Path("data/crops")
 CSV_PATH = Path("data/labels.csv")
 
 crop_files = sorted(CROP_FOLDER.glob("*.png"))
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-
-print(f"Using device: {device}")
-print("Loading handwriting OCR model...")
-
-processor = TrOCRProcessor.from_pretrained(
-    "microsoft/trocr-base-handwritten"
-)
-
-model = VisionEncoderDecoderModel.from_pretrained(
-    "microsoft/trocr-base-handwritten"
-).to(device)
-
-model.eval()
-
-print("Model loaded.")
 
 existing = {}
 
@@ -39,13 +20,21 @@ if CSV_PATH.exists():
 
 
 def save_csv():
+
     rows = []
 
     for crop in crop_files:
+
         if crop.name in existing:
             rows.append(existing[crop.name])
 
-    with open(CSV_PATH, "w", encoding="utf-8", newline="") as f:
+    with open(
+        CSV_PATH,
+        "w",
+        encoding="utf-8",
+        newline=""
+    ) as f:
+
         writer = csv.DictWriter(
             f,
             fieldnames=[
@@ -60,44 +49,22 @@ def save_csv():
         writer.writerows(rows)
 
 
-def recognize_text(image_path):
-    try:
-        image = Image.open(image_path).convert("RGB")
-
-        pixel_values = processor(
-            images=image,
-            return_tensors="pt"
-        ).pixel_values.to(device)
-
-        with torch.no_grad():
-            generated_ids = model.generate(
-                pixel_values,
-                max_new_tokens=128
-            )
-
-        text = processor.batch_decode(
-            generated_ids,
-            skip_special_tokens=True
-        )[0]
-
-        return text.strip()
-
-    except Exception as e:
-        print(f"OCR error: {e}")
-        return ""
-
-
 class AnnotationApp:
 
     def __init__(self, root):
 
         self.root = root
-        self.root.title("Handwriting Dataset Annotator")
-        self.root.geometry("1300x820")
+
+        self.root.title(
+            "Handwriting Dataset Annotator"
+        )
+
+        self.root.geometry(
+            "1300x820"
+        )
 
         self.index = 0
         self.photo = None
-        self.last_ocr_file = None
 
         self.find_first_unlabeled()
 
@@ -106,9 +73,14 @@ class AnnotationApp:
             font=("Arial", 14)
         )
 
-        self.counter_label.pack(pady=10)
+        self.counter_label.pack(
+            pady=10
+        )
 
-        self.image_frame = tk.Frame(root)
+        self.image_frame = tk.Frame(
+            root
+        )
+
         self.image_frame.pack(
             fill="both",
             expand=True
@@ -122,7 +94,9 @@ class AnnotationApp:
             expand=True
         )
 
-        form = tk.Frame(root)
+        form = tk.Frame(
+            root
+        )
 
         form.pack(
             fill="x",
@@ -192,14 +166,34 @@ class AnnotationApp:
             padx=10
         )
 
-        symbol_frame = tk.Frame(root)
-        symbol_frame.pack(pady=5)
+        symbol_frame = tk.Frame(
+            root
+        )
+
+        symbol_frame.pack(
+            pady=5
+        )
 
         symbols = [
-            "α", "β", "θ", "φ",
-            "⇒", "→", "Δ", "μ",
-            "ω", "λ", "π",
-            "^2", "^3", "_0"
+            "α",
+            "β",
+            "θ",
+            "φ",
+            "Φ",
+            "⇒",
+            "→",
+            "Δ",
+            "δ",
+            "μ",
+            "ω",
+            "λ",
+            "π",
+            "∞",
+            "±",
+            "√",
+            "^2",
+            "^3",
+            "_0"
         ]
 
         for i, symbol in enumerate(symbols):
@@ -218,7 +212,9 @@ class AnnotationApp:
                 padx=2
             )
 
-        buttons = tk.Frame(root)
+        buttons = tk.Frame(
+            root
+        )
 
         buttons.pack(
             pady=15
@@ -237,23 +233,12 @@ class AnnotationApp:
 
         tk.Button(
             buttons,
-            text="Run OCR Again",
-            width=15,
-            command=self.run_ocr
-        ).grid(
-            row=0,
-            column=1,
-            padx=5
-        )
-
-        tk.Button(
-            buttons,
             text="Discard",
             width=15,
             command=self.discard
         ).grid(
             row=0,
-            column=2,
+            column=1,
             padx=5
         )
 
@@ -264,7 +249,7 @@ class AnnotationApp:
             command=self.save_and_next
         ).grid(
             row=0,
-            column=3,
+            column=2,
             padx=5
         )
 
@@ -275,7 +260,7 @@ class AnnotationApp:
             command=self.skip
         ).grid(
             row=0,
-            column=4,
+            column=3,
             padx=5
         )
 
@@ -312,6 +297,7 @@ class AnnotationApp:
         for i, crop in enumerate(crop_files):
 
             if crop.name not in existing:
+
                 self.index = i
                 return
 
@@ -323,12 +309,19 @@ class AnnotationApp:
         if not crop_files:
             return
 
-        crop = crop_files[self.index]
+        crop = crop_files[
+            self.index
+        ]
 
-        image = Image.open(crop)
+        image = Image.open(
+            crop
+        )
 
         image.thumbnail(
-            (1150, 430)
+            (
+                1150,
+                430
+            )
         )
 
         self.photo = ImageTk.PhotoImage(
@@ -358,7 +351,9 @@ class AnnotationApp:
 
         if crop.name in existing:
 
-            row = existing[crop.name]
+            row = existing[
+                crop.name
+            ]
 
             self.text_entry.insert(
                 0,
@@ -369,37 +364,6 @@ class AnnotationApp:
                 row["type"]
             )
 
-        else:
-
-            self.root.update()
-
-            self.counter_label.config(
-                text=(
-                    f"{self.index + 1} / "
-                    f"{len(crop_files)}   |   "
-                    f"{crop.name}   |   OCR..."
-                )
-            )
-
-            self.root.update()
-
-            prediction = recognize_text(
-                crop
-            )
-
-            self.text_entry.insert(
-                0,
-                prediction
-            )
-
-            self.counter_label.config(
-                text=(
-                    f"{self.index + 1} / "
-                    f"{len(crop_files)}   |   "
-                    f"{crop.name}"
-                )
-            )
-
         self.text_entry.focus_set()
 
         self.text_entry.icursor(
@@ -407,7 +371,10 @@ class AnnotationApp:
         )
 
 
-    def insert_symbol(self, symbol):
+    def insert_symbol(
+        self,
+        symbol
+    ):
 
         position = self.text_entry.index(
             tk.INSERT
@@ -421,30 +388,14 @@ class AnnotationApp:
         self.text_entry.focus_set()
 
 
-    def run_ocr(self):
+    def save_current(
+        self,
+        keep
+    ):
 
-        crop = crop_files[self.index]
-
-        prediction = recognize_text(
-            crop
-        )
-
-        self.text_entry.delete(
-            0,
-            tk.END
-        )
-
-        self.text_entry.insert(
-            0,
-            prediction
-        )
-
-        self.text_entry.focus_set()
-
-
-    def save_current(self, keep):
-
-        crop = crop_files[self.index]
+        crop = crop_files[
+            self.index
+        ]
 
         existing[crop.name] = {
             "filename": crop.name,
@@ -492,6 +443,7 @@ class AnnotationApp:
         if self.index < len(crop_files) - 1:
 
             self.index += 1
+
             self.load_current()
 
         else:
@@ -506,17 +458,21 @@ class AnnotationApp:
         if self.index > 0:
 
             self.index -= 1
+
             self.load_current()
 
 
     def close(self):
 
         save_csv()
+
         self.root.destroy()
 
 
 root = tk.Tk()
 
-app = AnnotationApp(root)
+app = AnnotationApp(
+    root
+)
 
 root.mainloop()

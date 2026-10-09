@@ -13,3 +13,6 @@ reforge/
 *.safetensors
 
 .DS_Store
+# Generated inference artifacts and local model cache
+outputs/
+.reforge-cache/
