@@ -1,5 +1,4 @@
 """Lazy, strictly checked loading of the existing local pretrained pipeline."""
-import csv
 import os
 import random
 import sys
@@ -15,12 +14,17 @@ def prepare_imports():
     return cfg
 
 class Pipeline:
-    def __init__(self, adapter=None, device='auto'):
+    def __init__(self, adapter=None, device='auto', style_config=None):
         self.cfg = prepare_imports()
         self.adapter = ROOT / adapter if adapter else None
-        rows = list(csv.DictReader((ROOT / 'data/finetune_words/train/labels.csv').open(encoding='utf-8')))
-        self.refs = [ROOT / 'data/finetune_words/train/images' / next(r['filename'] for r in rows if r['text'] == w)
-                     for w in ['dimention', 'should', 'equal', 'will', 'return']]
+        self.style_config_path = style_config or 'page_engine/styles/erdem.json'
+        self.style_config = read_json(ROOT / self.style_config_path)
+        self.refs = [ROOT / p for p in self.style_config['references']]
+        if len(self.refs) != 5 or len(set(self.refs)) != 5:
+            raise ValueError('Style configuration must select five distinct word crops')
+        for path in self.refs:
+            with Image.open(path) as image:
+                image.verify()
         cfg = self.cfg
         snapshot = ROOT / cfg['hf_cache'] / 'hub' / ('models--' + cfg['checkpoint_repo'].replace('/', '--')) / 'snapshots' / cfg['checkpoint_revision']
         self.base_path = snapshot / cfg['unet_checkpoint']

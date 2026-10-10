@@ -1,0 +1,12 @@
+{
+  "seed": 9500,
+  "layout": {"page": "a4", "margins_mm": [16,16,22,18], "line_spacing_mm": 8.0, "word_height_mm": 4.6, "word_spacing_mm": 2.4, "paragraph_extra_lines": 0.8, "size_variation": 0.025, "vertical_variation_mm": 0.12},
+  "processing": {"ink_strength": 0.65},
+  "blocks": [
+    {"kind": "heading", "text": "Motion notes"},
+    {"kind": "paragraph", "text": "A net force changes the motion of a body. The force equals mass times acceleration."},
+    {"kind": "paragraph", "text": "A greater mass needs more force for the same acceleration. The angle changes over time."},
+    {"kind": "paragraph", "text": "Given mass and force find acceleration. From rest the velocity changes over time."},
+    {"kind": "math", "text": "F=ma \\quad\\Rightarrow\\quad a=\\frac{F}{m}"}
+  ]
+}

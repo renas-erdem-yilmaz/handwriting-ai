@@ -1,0 +1,17 @@
+# Motion notes
+
+A net force changes the motion of a body. The force equals mass times acceleration.
+
+A greater mass needs more force for the same acceleration. The angle changes over time.
+
+$F = ma$
+
+$a = F/m$
+
+$v = v_0 + at$
+
+$x = 1/2 at^2$
+
+$θ = α + β$
+
+$v^2 = v_0^2 + 2ax$

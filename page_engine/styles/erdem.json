@@ -1,0 +1,12 @@
+{
+  "name": "erdem-training-only-five-words",
+  "references": [
+    "data/finetune_words/train/images/page_001_region_011_crop_0011_word_01.png",
+    "data/finetune_words/train/images/page_001_region_011_crop_0011_word_04.png",
+    "data/finetune_words/train/images/page_001_region_012_crop_0012_word_00.png",
+    "data/finetune_words/train/images/page_001_region_020_crop_0020_word_00.png",
+    "data/finetune_words/train/images/page_001_region_020_crop_0020_word_01.png"
+  ],
+  "ink_opacity_target": 0.82,
+  "note": "Same five genuine train-only reference words as Steps 8–9. One shared configuration per page; target controls darkness, not stroke geometry."
+}

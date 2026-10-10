@@ -9,7 +9,7 @@ def ink_box(image, threshold=190):
     return int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1
 
 def normalize(image, text, target_height, variation=1.0):
-    """Normalize actual ink, not the padded model canvas. Keep aspect ratio."""
+    """Legacy whole-ink-height scaling; default layout uses adaptive x-height."""
     box = ink_box(image)
     crop = image.convert('L').crop(box)
     # Suppress pale diffusion background texture without altering dark ink.

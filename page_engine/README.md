@@ -1,5 +1,9 @@
 # Step 9: local word generation and page previews
 
+For adaptive consistency, three-candidate generation and the local Tkinter word
+reviewer, see [QUALITY.md](QUALITY.md). The original commands below remain available.
+For current x-height-based writing-size controls, see [SCALE.md](SCALE.md).
+
 Run from the main project directory in PowerShell. All original data, training
 weights, Reforge sources, baseline and evaluation images remain read-only.
 
@@ -55,8 +59,11 @@ several common operators and basic superscript/subscript digits. General TeX syn
 must be supported by Matplotlib Mathtext; unsupported syntax raises an error.
 No symbolic algebra or correctness proof is performed.
 
-Math uses STIX standard fonts through local Matplotlib Mathtext, not handwritten
-glyphs. Every page has an explicit footer and every math placement has provenance.
+Math now assembles explicitly approved handwritten symbol crops when the entire
+equation's inventory is available; otherwise it uses STIX standard-font fallback.
+See [math_symbols/README.md](math_symbols/README.md) for the collection tool,
+restricted syntax, approval requirements and commands. Every page has an explicit
+footer and every math placement has provenance.
 Reforge also synthesizes trailing punctuation through its existing font path.
 Unsupported equations are never silently dropped or replaced with bogus output.
 
