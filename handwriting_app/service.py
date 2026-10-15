@@ -15,7 +15,7 @@ from page_engine.math_symbols.renderer import render as render_math
 from page_engine.model import Pipeline
 from page_engine.candidates import CandidateStore
 
-PAGE_MM={'A4':(210,297),'Letter':(215.9,279.4)}
+PAGE_MM={'A4':(210,297),'Letter':(215.9,279.4),'Notebook':(176,250)}
 WORD=re.compile(r"[A-Za-z]+(?:['-][A-Za-z]+)*[.,;:!?]?")
 
 class Cancelled(Exception):pass
@@ -43,15 +43,19 @@ class Settings:
     adapter: str|None=None
     device: str='auto'
     dpi: int=150
+    style_config: str='page_engine/styles/erdem.json'
+    opacity_target: float=.82
+    natural_variation: float=.025
 
     def validate(self):
-        if self.page not in PAGE_MM or self.background not in ('blank','lined'):raise ValueError('Choose A4/Letter and blank/lined paper')
-        numbers=(*self.margins,self.line_spacing,self.x_height,self.word_spacing,self.paragraph_gap,self.guidance)
+        if self.page not in PAGE_MM or self.background not in ('blank','lined'):raise ValueError('Choose A4/Letter/Notebook and blank/lined paper')
+        numbers=(*self.margins,self.line_spacing,self.x_height,self.word_spacing,self.paragraph_gap,self.guidance,self.opacity_target,self.natural_variation)
         if len(self.margins)!=4 or not all(math.isfinite(float(v)) for v in numbers):raise ValueError('Settings must be finite numbers')
         if not all(6<=v<=70 for v in self.margins):raise ValueError('Each margin must be 6–70 mm')
         if not 1.5<=self.x_height<=6:raise ValueError('Writing x-height must be 1.5–6 mm')
         if not self.x_height/.73+1.1<=self.line_spacing<=25:raise ValueError('Increase line spacing: allow at least x-height / 0.73 + 1.1 mm')
         if not 0<=self.word_spacing<=10 or not 0<=self.paragraph_gap<=4:raise ValueError('Word spacing must be 0–10 mm; paragraph gap 0–4 lines')
+        if not .55<=self.opacity_target<=.95 or not 0<=self.natural_variation<=.05:raise ValueError('Ink opacity must be 0.55–0.95; natural size variation 0–0.05')
         if self.device not in ('auto','cuda','cpu') or not 72<=self.dpi<=300:raise ValueError('Unsupported device or DPI')
         if not isinstance(self.seed,int) or not 0<=self.seed<2**32:raise ValueError('Seed must be an integer from 0 to 4294967295')
         if not isinstance(self.steps,int) or not 1<=self.steps<=200 or not 0<self.guidance<=20 or self.candidates not in (1,2,3):raise ValueError('Invalid inference settings')
@@ -85,9 +89,10 @@ def parse_document(text,settings):
             'layout':{'page':settings.page.lower(),'size_mm':list(PAGE_MM[settings.page]),'background':settings.background,
                       'dpi':settings.dpi,'margins_mm':list(settings.margins),'line_spacing_mm':settings.line_spacing,
                       'x_height_mm':settings.x_height,'word_height_mm':settings.x_height/.73,
+                      'math_font_points':15*settings.x_height/3.1,
                       'word_spacing_mm':settings.word_spacing,'paragraph_extra_lines':settings.paragraph_gap,
-                      'size_variation':.025,'vertical_variation_mm':.12,'heading_size_scale':1.25},
-            'math':{'mode':'auto'},'processing':{'mode':'adaptive'}}
+                      'size_variation':settings.natural_variation,'vertical_variation_mm':.12,'heading_size_scale':1.25},
+            'math':{'mode':'auto'},'processing':{'mode':'adaptive','opacity_target':settings.opacity_target}}
 
 def expected_tokens(document):
     return [(source,text) for b in document['blocks'] for source,text in
@@ -126,6 +131,14 @@ class Runner:
         self.pipeline_factory=pipeline_factory;self.store_factory=store_factory
         self.pipeline=None;self.lock=threading.Lock()
 
+    def get_pipeline(self,settings):
+        kwargs={} if settings.style_config=='page_engine/styles/erdem.json' else {'style_config':settings.style_config}
+        candidate=self.pipeline_factory(settings.adapter,settings.device,**kwargs)
+        if self.pipeline is None or candidate.identity!=self.pipeline.identity or candidate.device_option!=self.pipeline.device_option:
+            self.pipeline=None  # Release the old model before loading a different one.
+            self.pipeline=candidate
+        return self.pipeline
+
     def generate(self,text,settings,output='outputs/app_runs',progress=lambda *a:None,cancel=None):
         if not self.lock.acquire(blocking=False):raise RuntimeError('A generation is already running; wait or cancel it first')
         try:
@@ -140,12 +153,7 @@ class Runner:
             write_json(folder/'document.json',document)
             try:
                 progress(0,1,'Verifying local pretrained checkpoints and shared style references')
-                candidate=self.pipeline_factory(settings.adapter,settings.device)
-                if self.pipeline is None or candidate.identity!=self.pipeline.identity or candidate.device_option!=self.pipeline.device_option:
-                    # Release prior GPU allocations before switching adapters/devices.
-                    self.pipeline=None
-                    self.pipeline=candidate
-                pipeline=self.pipeline
+                pipeline=self.get_pipeline(settings)
                 sampling={'steps':settings.steps,'guidance':settings.guidance,'retries':0,'ocr':False}
                 store=self.store_factory(pipeline,sampling,initial_count=settings.candidates)
                 total=sum(s=='word' for s,t in expected_tokens(document))
@@ -165,7 +173,7 @@ class Runner:
                         progress(self.done,max(total,1),f'Prepared {self.done}/{total} words');return result
                 manifest=build(document,ProgressStore(),str(folder/'preview'),read_json(ROOT/'page_engine/profiles/scanned.json'))
                 check();validate_layout(manifest)
-                session={'schema':1,'document':document,'model':pipeline.identity,'style_config':'page_engine/styles/erdem.json',
+                session={'schema':1,'document':document,'model':pipeline.identity,'style_config':settings.style_config,
                          'adapter':settings.adapter,'sampling':sampling,'candidate_count':settings.candidates,'reuse_approved':False,
                          'words':[{'index':r['index'],'text':r['text'],'seed':r['seed'],'bundle_id':r['bundle_id']} for r in manifest['word_records']]}
                 write_json(folder/'session.json',session)

@@ -1,0 +1,4 @@
+# Install only into the existing working .reforge inference environment.
+streamlit==1.65.0
+reportlab==5.0.1
+pypdf==6.20.0
